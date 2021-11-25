@@ -1,0 +1,4 @@
+hola en español
+Para cada documento, generar un fichero con formato CSV que contenga la
+ocurrencia de cada uno de los términos en el mismo. Estos deben aparecer en orden decreciente de frecuencia, con el siguiente formato: termino
+y frecuencia (número de ocurrencias del término en el documento) separados por ";", como en el siguiente ejemplo obtenido a partir del texto de la
