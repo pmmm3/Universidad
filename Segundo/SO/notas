@@ -1,0 +1,13 @@
+Maria Angustias Sanchez Buendia
+
+lsi.ugr.es/lsi/mariansb
+Despacho 7 de la 3ª
+mariansb@ugr.es
+Libro:Kerrisk " The linux programing interface "
+
+
+man en pdf
+
+mant -t termino_a_buscar | ps2pdfwr - termino.pdf 
+
+

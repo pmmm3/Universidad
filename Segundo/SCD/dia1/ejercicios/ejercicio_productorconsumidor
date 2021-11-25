@@ -1,0 +1,66 @@
+#include<iostream>
+#include<cassert>
+#include<thread>
+#include<mutex>
+#include<random>
+#include“Semaphore.h”
+
+using namespace std;
+
+using namespace SEM;		
+
+	constint num_items = 40 ,			//número de items 
+		tam_vec = 10 ;				//tamaño del buffer
+
+	unsigned cont_prod[num_items] = {0},		//contadores de verificación: producidos 			
+		cont_cons[num_items] = {0};		//contadores de verificación: consumidos
+
+	int buffer[tam_vec];				//buffer de 10 ítems//semáforo que permite a la hebra productora escribir
+
+	Semaphore puedo_escribir = tam_vec;		//semáforo que permite a la hebra consumidora
+
+	leerSemaphore puedo_leer = 0;
+
+	Semaphore bloqueo = 1;
+	int ultimo = 0;					//variable que controla la posición dentro del vector que escribe / consume 
+
+/* Función que implementa un número aleatorio */
+
+	template <int min, int max> int aleatorio()
+	{
+		static default_random_engine generador( (random_device())());
+		static uniform_int_distribution<int> distribucion_uniforme(min, max);
+		return distribucion_uniforme( generador );
+	}
+/* Esta función produce un dato, será usada por la función Productor para producir undato */
+
+int producir_dato()
+	{
+		staticint contador = 0;
+		this_thread::sleep_for( chrono::milliseconds( aleatorio<20,100>() ));
+		cout << "producido: " << contador << endl << flush ;
+		cont_prod[contador] ++ ;
+		return contador++ ;
+	}
+
+/*Esta función consume un dato, será usada por la función Consumidor para consumir undato */
+	void consumir_dato( unsigned dato )
+	{
+		assert( dato < num_items );
+		cont_cons[dato] ++ ;
+		this_thread::sleep_for( chrono::milliseconds( aleatorio<20,100>() ));
+		cout << "consumido: " << dato << endl ;
+	}
+
+
+	void test_contadores()
+	{
+	bool ok = true ;cout << "comprobando contadores ...." ;
+	for( unsigned i = 0 ; i < num_items ; i++ )
+{
+if (cont_prod[i] != 1){
+cout << "error: valor " << i << " producido " << cont_prod[i] <<" veces." << endl ;
+ok = false ;
+}
+if (cont_cons[i] != 1){
+cout << "error: valor " << i << " consumido " << cont_cons[i] <<" veces" << endl ;ok = false;}}if (ok)cout << endl << flush << "solución (aparentemente) correcta." << endl <<flush ;}

@@ -1,0 +1,53 @@
+Paso de mensajes
+
+Compilar:
+    mpicxx
+    mpic++
+Ejecutar:
+    mpirun -np (num_procesos) ./ejecutable
+
+OPENMPI
+    Comunicador= El canal de comunicacion : MPI_COMMON_WORLD
+    ID dentro del Comunicador --> Rank
+
+Estrucura del Programa:
+    MPI_Init();
+    .
+    .if(de id)--> Para distinguir distintos tipos de procesos
+    .
+    MPI_Finalize();
+
+Productor-Consumidor
+    *El buffer es un proceso más
+    * P <-> B <-> C
+
+Tipos de mensajes:
+    -Síncronos : 
+                -Send   
+                -S_send (Bloqueado hasta el receive del otro)
+
+Parametros de las funciones:
+    MPI_Send(buf,1,MPI_INT,rank,etq,comunicador)
+    MPI_Ssend(buf   (Puntero con los datosa),1 (Cantidad),MPI_INT  (Tipo de dato),rank(Id de al que le voy a hacer el send),etq (0),comunicador (MPI_COMMON_WORLD))
+    Se envia un entero almacenado en buf
+
+MPI_Status status;
+MPI_Recv(buf,1,MPI_INT,rank (De quien),etq,comunicador(MPI_COMMON_WORLD),&status)
+
+MPI_SOURCE : Quien ha enviado el mensaje que acabo de recibir
+MPI_TAG    : Que etiqueta le ha puesto el que lo ha enviado
+
+rank vale : MPI_ANY_SOURCE : en el receive de cualquiera y se especifica por la etiqueta el que quieres recibir
+
+Las etiquetas son enteros
+: Producir = 1
+: Consumir = 0
+: MPI_ANY_TAG
+
+int etq;
+    etq = MPI_ANY_TAG;
+    if (pos == tam_vec)
+        etq = etiquetaConsumidor
+    else if ( pos ==0)
+        etq = etiquetaProductor
+    

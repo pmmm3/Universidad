@@ -1,0 +1,28 @@
+
+Tipos 
+    c++ 11       (Señalar y continuar)
+    HoareMonitor ( Señalar y espera urgente)
+// g++ -std=c++11 -pthread Semaphore.cpp HoareMonitor.cpp nom.cpp -o ejecutable
+en la parte privada se meten las variables compartidas
+Todos los metodos en HoareMonitor garantizan la Exclusion Mutua
+
+Los monitores tienen que encargarse de los puntos de sincronización
+
+Los puntos de sincronización se solucionan con variables de tipo condición.
+
+
+class Buffer :public HoareMonitor{
+    private:
+        int datos[10];
+        int pos;
+
+        Condvar puedeE,puedeL;
+        //Los Condvar : wait    (Bloqueo si o si)
+        //            : signal  (Desbloquea si esta bloqueado, si no no hace nada)
+        //            : get_nwt (Numero de hebras esperando)
+    public:
+        Buffer()
+        {
+
+        }
+}

@@ -1,0 +1,31 @@
+//g++ -std=c++11 -pthread Semaphore.cpp plantilla.cpp -o ejecutable
+//               -lpthread
+1.Seccion de los includes
+2.Semaforos
+3.Variables globales
+4.Funciones que ejecutaran las hebras
+    //void funcion_productor(...){
+        bucle...
+        }
+    //void funcion_consumidor(...){
+        bucle...
+        }
+5.Funcion main (Encargada de hacer hebras)
+    //Declaracion de las hebras con funcion
+
+    thread hebra_consumidor(funcion_consumidor,parametros_de_la_funcion);
+    thread hebra_productor(funcion_productor,parametros_de_la_funcion);
+
+        //Vector de hebras
+            thread hebras_consumidores[4];
+            for (int i = 0 ; i < 4 ;i ++)
+                hebras_consumidores[i]=thread(funcion_consumidor,parametros_de_la_funcion);
+
+    //Esperar que terminen las hebras
+
+    hebra_consumidor.join();
+    hebra_productor.join();
+
+        //Vectores de hebras
+            for (int i = 0 ; i < 4 ;i ++)
+                hebras_consumidores[i].join();

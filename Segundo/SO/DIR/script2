@@ -1,0 +1,7 @@
+#!/bin/bash
+lim=1000000
+for ((c=1; c<lim; c++ ))
+do
+sleep 1
+done
+echo fin $0 con pid $$

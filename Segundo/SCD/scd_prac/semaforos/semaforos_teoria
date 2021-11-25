@@ -1,0 +1,86 @@
+Semaforos
+    
+    //Compilar
+        g++ -std=c++11 -pthread Semaphore.cpp  4fumadores.cpp -o ejecutable
+        ./ejecutable
+    
+    //Libreria: #include "Semaphore.h"
+    //En c++ Semaphore s (valor_inicial);
+    //En c++ s.sem_wait();  || sem_wait(s)
+    //En c++ s.sem_signal();|| sem_signal(s)
+    wait(s)
+    {
+        Si s vale 0 , bloquea el proceso
+        Si no vale 0 lo decrementa
+    }
+
+    signal(s)
+    {
+        Si hay procesos bloqueados , desbloquea el proceso.
+        Si no, incrementa s.
+    }
+    Operacion atomica: instrucciones atomicas
+
+    Se usan los semaforos como punto de sincronizacion y para EM(Exclusion mutua).
+
+    Cuando tenemos una Seccion Critica
+    hacemos un wait sobre un semaforo y despues un signal.
+        El semaforo 's' con valor 1
+        s=1;
+            wait(s)
+            //S.C
+            signal(s)
+
+    Problema del Productor-Consumidor
+    version con buffer limitado a 10 elementos version (LIFO)
+
+    semaforo mutex=1;
+    semaforo elementos=0;
+    semaforo producir=10;
+    int buf=10;
+    i=0;
+
+    -Productor 
+        wait(producir);
+        wait(mutex);
+        buf[i]=elem;
+        i++;
+        signal(mutex);
+        signal(elementos);
+    -Consumidor
+        wait(elementos);//Para que no se consuma si no hay elementos
+        wait(mutex);
+        i--;
+        elem=buf[i];
+        signal(mutex);
+        signal(producir);
+
+    Problema del Productor-Consumidor
+    version con buffer limitado a 10 elementos version (FIFO)
+
+    semaforo mutex = 1;
+    semaforo elementos=0;
+    semaforo producir=10;
+    int buf =10;
+    int ini = 0;
+    int fin = 0;
+    -Productor 
+        wait(producir);
+        wait(mutex);
+
+        buf[fin]=elem;
+        fin=(fin+1)%10;
+
+        signal(mutex);
+        signal(elementos);
+    -Consumidor
+        wait(elementos);//Para que no se consuma si no hay elementos
+        wait(mutex);
+        
+        elem=buf[ini];
+        ini=(ini+1)%10;
+
+        signal(mutex);
+        signal(producir);
+
+

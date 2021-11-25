@@ -1,0 +1,21 @@
+Modulo 2
+
+open devuelve un numero
+	parametros de open:(
+		pathnam: 
+		flags:
+		mode: Es opcional este argumento
+		)
+	Si en una llamada al sistema hay  devuelto un negativo --> (Se ha producido un error)
+
+	
+
+	O 3  ---> 0 1 1
+	O 1 ----> 0 0 1
+------------------------
+O3|O1 -->         0 1 1
+O3&O1 -->         0 0 1        
+
+
+Ejemplo tarea1.c del Modulo 2
+S_IRUSR|S_IWUSR --> Permisos: Lectura y escritura solo 
