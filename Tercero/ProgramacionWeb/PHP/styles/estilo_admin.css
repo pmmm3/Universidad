@@ -1,0 +1,27 @@
+.listar_SQL{
+
+    width: 100%;
+    border: 1px solid black;
+    font-size: medium;
+    border-collapse: collapse;
+}
+.listar_SQL th,.listar_SQL td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.listar_SQL th{
+    color: whitesmoke;
+    background-color: rgb(10, 10, 10);
+    border-collapse: collapse;
+}
+.listar_SQL tr{background-color: #ffffff;}
+.listar_SQL tr:nth-child(even){background-color: #5d5d5d2f;}
+.listar_SQL tr:hover {background-color: #ddd;}
+
+.add_new {
+    color: rgb(0, 33, 100);
+    font-size: medium;
+}
+.administrar_opts{
+    margin:6%;
+}

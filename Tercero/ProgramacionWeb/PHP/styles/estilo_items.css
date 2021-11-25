@@ -1,0 +1,34 @@
+.Item_Selec{
+    display: flex;
+    flex-direction: row;
+}
+.Item_Selec table{
+    border-collapse: separate;
+
+}
+.Item_Selec table tr{
+    border: 3px solid black;
+
+}
+.descripcion_item
+{
+    padding: 0% 1%;
+    margin: 0.3% 1% 1% 1%;
+    text-align: justify;
+    background-color: beige;
+}
+.descripcion_item p{
+    padding: 1%;
+    border: 1px solid black;
+}
+
+.nav_item ul
+{
+    list-style-type: none;
+    margin: 0.5%;
+    padding: 0.5%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

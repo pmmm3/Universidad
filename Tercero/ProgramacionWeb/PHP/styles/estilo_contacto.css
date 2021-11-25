@@ -1,0 +1,22 @@
+table:not(.registrado){
+    border-collapse: collapse;
+    width: 100%;
+}
+th:not(.login,.registrado),td:not(.registrado){
+    text-align: center;
+    padding: 2%;
+}
+th:nth-child(even):not(.registrado){
+    background-color: rgb(35, 36, 33);
+    color: rgb(255, 255, 255);
+    text-align: justify;
+}
+th:not(.registrado){
+    background-color: rgb(190, 190, 190);
+    color: black;
+
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}

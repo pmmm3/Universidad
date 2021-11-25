@@ -1,0 +1,21 @@
+Datos para el ejercicio 3: alumno (id,altura), esquis (altura)
+
+NUM_ALUMNOS
+5
+A1  160
+A2  158
+A3  161
+A4  162
+A5  159
+
+
+
+NUM_ESQUIS
+5
+158
+160
+165
+165
+160
+
+

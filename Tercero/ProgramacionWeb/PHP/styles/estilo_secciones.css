@@ -1,0 +1,58 @@
+main{
+    justify-content: center;
+    flex-direction: column;
+}
+.n_seccion_nav{
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: 1%;
+
+}
+.articulo_novedades
+{
+    border-radius: 0%;
+}
+
+.menu_secc table{
+    border-collapse: collapse;
+}
+
+.mostrar_mas ul
+{
+    justify-content: center;
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    text-align: center;
+
+}
+.mostrar_mas li
+{
+    margin: 1%;
+}
+.mostrar_mas a{
+    text-decoration: none;
+    color: inherit;
+}
+.mostrar_mas .sec_activo{
+    font-weight: bold;
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+/*La regla arroba @keyframes permite a los autores
+controlar los pasos intermedios en una secuencia de animación CSS
+ mediante el establecimiento de keyframes (o puntos de trayectoria) */
+@keyframes blink-animation {
+/*to : Un desplazamiento final*/
+  to {
+    visibility: hidden;
+  }
+}
+/*para que la animación funcione correctamente en varios navegadores.
+
+*/
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}

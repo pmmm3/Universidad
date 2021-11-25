@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<category>
+    <pattern> ^ cita ^ </pattern>
+    <template>
+Muy bien, cuando quiere la cita
+<think><set name="topic">especificadia</set></think>
+    </template>
+</category>
+
+
+<!-- ESPECIFICA DIA --> 
+<topic name="especificadia">
+    <category>
+        <pattern> FECHACONCRETA * * </pattern>
+        <template>Seguro que quieres ese dia
+            
+            <think>
+                <set var="dia"><map name="num_dias"><star index="1"/></map></set>
+                <set var="mes"><map name="meses_num"><star index="2"/></map></set>
+                <set name="dia_cita"> <get var="dia"/>-<get var="mes"/>-20 </set>
+            </think>
+            <think><set name="topic">reservacita</set></think>
+        </template>
+    </category>
+    
+    <category>
+        <pattern> Obtenernumdefecha * </pattern>
+        <template>
+            <srai>selectitem 1 in <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern> Obtenermes * </pattern>
+        <template>
+            <srai>selectitem 2 in <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern> ^ el <set>number</set> (de) (mes) <set>month_es</set> </pattern>
+        <template>
+            <srai>  FECHACONCRETA <star index="2"/> <star index="3"/></srai>
+           
+        </template>
+    </category>
+
+    <category>
+        <pattern> ^ hoy ^ </pattern>
+        <template>
+            <set var="fecha"><srai>Date</srai></set>
+            <srai>  FECHACONCRETA <srai>Obtenernumdefecha <get var="fecha"/> </srai> <srai> Obtenermes <get var="fecha"/> </srai></srai>
+        </template>
+    </category>
+    <category>
+        <pattern> ^ manana ^  </pattern>
+        <template>
+            <set var="fecha"><srai>DATE TOMORROW</srai></set>
+            <srai>  FECHACONCRETA <srai>Obtenernumdefecha <get var="fecha"/> </srai> <srai>Obtenermes <get var="fecha"/> </srai></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern> ^ pasado manana ^ </pattern>
+        <template>
+            <set var="fecha"><srai>DAYAFTERTOMORROWDATE</srai></set>
+            <srai>  FECHACONCRETA <srai>Obtenernumdefecha <get var="fecha"/> </srai> <srai>Obtenermes <get var="fecha"/> </srai></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>^  [ proximo siguiente ] <set>weekday_es</set>  ^ </pattern>
+        <template>
+            <set var="fecha"><srai>date on <star index="2"/></srai></set>
+            <srai>  FECHACONCRETA <srai>Obtenernumdefecha <get var="fecha"/> </srai> <srai> Obtenermes <get var="fecha"/> </srai></srai>
+        </template>
+    </category>
+</topic>   
+</aiml>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Foto Pick</title>
+        <link rel="stylesheet" type="text/css" href="styles/estilo.css" />
+        <link href="styles/estilo_index_movil.css" rel="stylesheet" media="(max-width: 480px)">
+        <meta name=”viewport” content=”width=device-width”>
+
+    </head>
+    <body>
+        <header>
+            <img src="imagenes/logo2/logo_transparent.png" alt="Logo" class="logo">
+            <h1 class="Titulo"> Foto Pick </h1>
+            <section class="login">
+                <form action="sitioweb.html" name="login" target="_self" >
+                    <label for="user">Usuario:</label><br>
+                    <input type="text" id="user" name="user" autofocus required><br>
+                    <label for="passwd">Contraseña:</label><br>
+                    <input type="text" id="passwd" name="passwd" required><br>
+                    <input type="submit" value="Enviar" class="boton_custom">
+                </form>
+                <br>
+                <a href="altausuario.html" >Registro de usuarios</a>
+
+            </section>
+
+
+        </header>
+        <nav class="navigation">
+            <ul>
+                <li><a title="Necesitas Iniciar Sesion" href="#S1" style="--custom_color:#242F16">Naturaleza</a></li>
+                <li><a title="Necesitas Iniciar Sesion" href="#S2" style="--custom_color:#281010 ">Ciudad</a></li>
+                <li><a title="Necesitas Iniciar Sesion" href="#S3" style="--custom_color: #330066">Animales</a></li>
+                <li><a title="Necesitas Iniciar Sesion" href="#S4" style="--custom_color: #181B64">Bebes</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="imagen_principal">
+                <img src="imagenes/foto_pick.png" alt="Foto Web descripcion" class="foto_pick">
+                <aside class="overlay">
+                    <h3 class="textoOverlay">Foto Pick WEB</h3>
+                </aside>
+
+            </section>
+            <section class="items_destacados">
+                <h3>Ultimas fotos</h3>
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item1/sunflower640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Polinización de los girasoles</h4>
+                    </a>
+                </article>
+
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item2/city-438393_640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Ciudad abarrotada</h4>
+                    </a>
+                </article>
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item3/dog-1168663_640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Perro perdido en la nieve</h4>
+                    </a>
+                </article>
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item4/baby-2935722_640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Bebe</h4>
+                    </a>
+                </article>
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item5/garden-19830_640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Jardin de las Delicias</h4>
+                    </a>
+                </article>
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item6/rose-165819_640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Rosa Peculiar</h4>
+                    </a>
+                </article>
+                <article class="articulo_novedades">
+                    <a href="items/item1.html">
+                        <img src="imagenes/items/item7/basilisk-5951351_640.jpg" alt="foto_articulo" class="imagen_articulo">
+                        <h4> Animal posando</h4>
+                    </a>
+                </article>
+
+
+
+
+            </section>
+
+        </main>
+        <footer>
+            <details >
+                <summary>Contacto - Cómo se hizo</summary>
+                <a href="contacto.html"><h3>Pablo M. Moreno Mancebo</h3></a>
+                <!-- https://www.iana.org/assignments/media-types/media-types.xhtml -->
+                <a href="pdfs/m.pdf"><h3>Enlace al pdf</h3></a>
+                <embed src="pdfs/m.pdf" type="application/pdf" width=" 100%" height="720px" />
+            </details>
+        </footer>
+    </body>
+</html>

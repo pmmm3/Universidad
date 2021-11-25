@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <!-- Resolución temporal de día. Dado un día representado como "dd MMMMMMMMM yy" !-->
+
+    <!--informar sobre si el día está libre o no !-->
+    <category>
+        <pattern>ESTALIBREEL *</pattern>
+        <template>
+            <think>
+            <set var="lista"><srai>LIST OF DAY <star/></srai></set>
+            <set var="lista"><srai> SUBLIST FROM 9 TO 20 OF <get var="lista"/></srai></set>
+            <set var="contador">1</set>
+            <set var="item"><srai>SELECTITEM <get var="contador"/> IN <get var="lista"/></srai></set>
+            </think>
+            <condition var="item">
+                
+                    <li value = "$">
+No esta libre ese dia </li>
+                    <li value = "null"> 
+El dia tiene algun hueco </li>
+                    <li>
+                        <think>
+                        <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                        <set var="item"><srai>selectitem <get var="contador"/> in <get var="lista"/></srai></set>             
+                        </think>
+                        <loop/>
+                    </li>
+            </condition>
+            </template>
+    </category>
+
+    <!--devolver la lista de franjas horarias libres entre dos tramos del mismo dia !-->
+    <category>
+        <pattern>LISTAFRANJASLIBRES * * *</pattern>
+        <template>
+            <think>
+            <set var="inicio"><star index="2"/></set>
+            <set var="fin"><star index="3"/></set>
+            <set var="contador">1</set>
+            <set var="lista"><srai> LIST OF DAY <star/></srai></set>
+            <set var="lista"><srai> SUBLIST FROM  <get var="inicio"/> TO <get var="fin"/> OF <get var="lista"/></srai></set>
+            <set var="salida"></set> 
+            <set var="item"><srai>SELECTITEM <get var="contador"/> IN <get var="lista"/></srai></set>
+            </think>   
+            
+            <condition var="item">
+                <li value = "$"> 
+                    <get var="salida"/> 
+                </li>
+                <li value = "null">
+                    <think>         
+                        <set var="franja_nueva"><srai>SUMA <get var="contador"/>  <srai> MINUS <get var="inicio"/> 1 </srai></srai></set>
+                        <set var="salida"> <get var="salida"/> <get var="franja_nueva"/></set> 
+                        <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                        <set var="item"><srai>selectitem <get var="contador"/> in <get var="lista"/></srai></set>  
+                    </think>        
+                        <loop/>
+                </li>
+                    
+                <li>
+                    <think>  
+                    <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                    <set var="item"><srai>selectitem <get var="contador"/> in <get var="lista"/></srai></set>  
+                    </think> 
+                    <loop/>
+                </li>
+            </condition>
+        
+        </template>
+    </category>
+
+    <!--devolver la lista de franjas horarias libres por la mañana !-->
+    <category>
+        <pattern>LISTAFRANJASLIBRESMORNING * </pattern>
+        <template><srai>LISTAFRANJASLIBRES  <star/>  9  13</srai></template>
+    </category>
+
+    <!--devolver la lista de franjas horarias libres por la tarde !-->
+    <category>
+        <pattern>LISTAFRANJASLIBRESAFTER * </pattern>
+        <template><srai>LISTAFRANJASLIBRES  <star/>  14  21</srai></template>
+    </category>
+
+    <!--devolver la lista de franjas horarias libres en un dia completo !-->
+    <category>
+        <pattern>LISTAFRANJASLIBRESDAY * </pattern>
+        <template><srai>LISTAFRANJASLIBRES  <star/>  9  21</srai></template>
+    </category>
+
+    
+
+    <!-- Convertir franja en hora !-->
+    <category>
+        <pattern> FORMATOHORA * </pattern>
+        <template>
+        <think>
+            <set var="tmp"><star/></set>
+        </think>
+        <condition var="tmp">
+            <li value="0:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="1:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="2:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="3:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="4:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="5:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="6:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="7:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="8:00">
+                0<get var="tmp"/>
+            </li>
+            <li value="9:00">
+                0<get var="tmp"/>
+            </li>
+            <li>
+                <get var="tmp"/>
+            </li>
+        </condition>
+        </template>
+    </category>
+    <category>
+        <pattern> FRANJAHORA * </pattern>
+        <template>
+            <think><set var="tmp"> <srai> MINUS <star/>  1  </srai>:00 </set>         </think>
+            <set var="tmp"><srai>FORMATOHORA <get var="tmp"/></srai></set>
+        </template>
+    </category>
+
+
+
+    <!-- reglas necesarias para que el bot pueda entablar una conversación !-->
+    <!--
+    <category>
+        <pattern> ^ el (dia) <set>number</set> (de) <set>month_es</set></pattern>
+        <template>Seguro que quieres ese dia
+            
+            <think>
+                <set var="dia"><map name="num_dias"><star index="2"/></map></set>
+                <set var="mes"><map name="meses_num"><star index="3"/></map></set>
+                <set name="dia_cita"> <get var="dia"/>-<get var="mes"/>-20 </set>
+            </think>
+            <think><set name="topic">reservacita</set></think>
+        </template>
+    </category>
+
+-->
+
+    <topic name="reservacita">
+        <category>
+            <pattern> ^  si  ^  </pattern>
+            <template>Voy a ver si ese dia esta libre
+                <set var="opcion"><srai>ESTALIBREEL  <get name="dia_cita"/></srai></set>
+
+                <condition var="opcion">
+                    <li value = "No esta libre ese dia">
+Desea elegir otro dia, (si o no)
+                        <think><set name="topic"> otrodia </set></think> 
+                    </li>
+                    <li>
+Estas son las horas disponibles el dia <get name="dia_cita"/>
+
+                    
+                        <think>
+                            <set name="lista_horas"><srai>LISTAFRANJASLIBRESDAY <get name="dia_cita"/></srai></set>
+                            <set var="contador">1</set>
+                            <set var="item"><srai>SELECTITEM <get var="contador"/> IN <get name="lista_horas"/></srai></set>
+                            <set var="salida"></set>
+                        </think>
+                        <condition var="item">
+                            <li value ="$"> 
+                                <get var="salida"/> 
+                                                            
+                                <think><set name="topic">elechora</set></think>
+                            </li>
+                            <li>
+                                <think>
+                                    <set var="salida"> <get var="salida"/> <srai> FRANJAHORA <get var="item"/> </srai></set>
+                                    <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                                    <set var="item"><srai>selectitem <get var="contador"/> in <get name="lista_horas"/></srai></set>  
+                                </think>
+                                <loop/>
+                            </li>
+                        </condition>
+Desea una hora concreta, por la manana, por la tarde o le da igual
+<think><set name="topic">elechora</set></think>                
+                    </li>
+
+                </condition>
+            </template>
+        </category>
+        <category>
+            <pattern> ^  no  ^  </pattern>
+            <template>
+Que otro dia le gustaria
+                <think><set name="topic">otrodia</set></think>
+            </template>
+        </category>
+
+
+    </topic>
+
+    <topic name="otrodia">
+
+        <category>
+            <pattern> ^ si ^  </pattern>
+            <template>
+Genial, digame el dia 
+                <think><set name="topic">especificadia</set></think>
+            </template>
+        </category>
+
+
+        <category>
+            <pattern> ^ no ^ </pattern>
+            <template>
+Okey, hasta luego
+                <think><set name="topic">unknown</set></think>
+            </template>
+        </category>
+
+
+    </topic>
+
+    <topic name="elechora">
+
+
+        <category>
+            <pattern>  ^ a las ^ </pattern>
+            <template>
+                <think>
+                    <set var="franja"><srai> ORDINAL <star index="2"/> </srai></set>
+                    <!--set name="lista_horas"><srai>LISTAFRANJASLIBRESDAY <get name="dia_cita"/></srai></set-->
+                    <set var="correcto"><srai>finditem <get var="franja"/> in  <get name="lista_horas"/> </srai></set>
+                </think>
+                <condition var="correcto">
+                    <li value="0">
+Esa hora no esta disponible.
+                        <think><set name="topic">unknown</set></think>
+                    </li>
+                    <li>
+
+                        
+                        <srai>RESERVARCITA  <srai>Franjahora  <srai> selectitem <get var="correcto"/> in <get name="lista_horas"/> </srai> </srai></srai>
+  
+                       
+
+                    </li>
+
+                </condition>
+            </template>
+        </category>
+
+        <category>
+            <pattern> ^ igual ^ </pattern>
+            <template><srai>AUTOMATICO </srai></template>
+        
+        </category>
+        <category>
+            <pattern> ^ cuando sea  ^ </pattern>
+            <template><srai>AUTOMATICO  </srai></template>
+        </category>
+
+
+        <category>
+            <pattern> ^ por la tarde ^ </pattern>
+            <template>
+            A que hora desea
+                <think>
+                    <set name="lista_horas"><srai>LISTAFRANJASLIBRESAFTER <get name="dia_cita"/> </srai></set>
+                    <set var="contador">1</set>
+                    <set var="item"><srai>SELECTITEM <get var="contador"/> IN <get name="lista_horas"/></srai></set>
+                    <set var="salida"></set>
+                </think>
+                <condition var="item">
+                    <li value ="$"> 
+                        <get var="salida"/> 
+                                                    
+                        <think><set name="topic">elechora</set></think>
+                    </li>
+                    <li>
+                        <think>
+                            <set var="salida"> <get var="salida"/> <srai> FRANJAHORA <get var="item"/> </srai></set>
+                            <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                            <set var="item"><srai>selectitem <get var="contador"/> in <get name="lista_horas"/></srai></set>  
+                        </think>
+                        <loop/>
+                    </li>
+                </condition>
+            </template>
+        </category>
+        <category>
+            <pattern> ^ por la manana ^ </pattern>
+            <template>
+                A que hora desea
+                
+                <think>
+                    <set name="lista_horas"><srai>LISTAFRANJASLIBRESMORNING <get name="dia_cita"/></srai></set>
+                    <set var="contador">1</set>
+                    <set var="item"><srai>SELECTITEM <get var="contador"/> IN <get name="lista_horas"/></srai></set>
+                    <set var="salida"></set>
+                </think>
+                <condition var="item">
+                    <li value ="$"> 
+                        <get var="salida"/> 
+                                                    
+                        <think><set name="topic">elechora</set></think>
+                    </li>
+                    <li>
+                        <think>
+                            <set var="salida"> <get var="salida"/> <srai> FRANJAHORA <get var="item"/> </srai></set>
+                            <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                            <set var="item"><srai>selectitem <get var="contador"/> in <get name="lista_horas"/></srai></set>  
+                        </think>
+                        <loop/>
+                    </li>
+                </condition>
+            </template>
+        </category>
+        <category>
+            <pattern> AUTOMATICO  </pattern>
+            <template>
+            <think>
+                <set name="contador_atomatico">1</set>
+                <!--set name="lista_horas"><srai>LISTAFRANJASLIBRESDAY <get name="dia_cita"/></srai></set-->
+            </think>       
+                <srai>NUEVAHORA</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>PREGUNTARHORA </pattern>
+            <template>
+A las <get name="horalocal"/> ( bien o mal )
+            </template>
+        </category>
+        
+        <category>
+            <pattern> ^ bien ^ </pattern>
+            <template>
+                <srai> RESERVARCITA  <get name="horalocal"/> </srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern> ^ mal ^ </pattern>
+            <template>
+                <srai>NUEVAHORA</srai>
+            </template>
+        </category>
+    
+
+        
+
+        <category>
+            <pattern>NUEVAHORA</pattern>
+            <template>
+            <think>
+                <set var="franja"> <srai>selectitem <get name="contador_atomatico"/> in <get name="lista_horas"/></srai></set>
+                <set name="horalocal"> <srai> MINUS  <get var="franja"/> 1 </srai>:00</set>  
+                <set name="contador_atomatico"><map name="successor"><get name="contador_atomatico"/></map></set>
+            </think>  
+
+                <condition var="franja">
+                    <li value="$">
+Desea reservar otra dia
+                        <think><set name="topic">otrodia</set></think>
+                    </li>
+                    <li>
+                        <srai>PREGUNTARHORA</srai>
+                    </li>
+                </condition>
+            </template>
+        </category>
+        <category>
+            <pattern> RESERVARCITA * </pattern>
+            <template>
+                De acuerdo, apunto su cita
+                <srai> MARK OCUPADO AT <srai>FORMATOHORA <star/></srai> ON <get name="dia_cita"/></srai>
+                Reservado correctamente
+                Desea reservar otra cita
+                <think><set name="topic">otrodia</set></think>
+            </template>
+        </category>
+
+        
+        <category>
+            <pattern> FORMATOHORA * </pattern>
+            <template>
+            <think>
+                <set var="tmp"><star/></set>
+            </think>
+            <condition var="tmp">
+                <li value="0:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="1:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="2:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="3:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="4:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="5:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="6:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="7:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="8:00">
+                    0<get var="tmp"/>
+                </li>
+                <li value="9:00">
+                    0<get var="tmp"/>
+                </li>
+                <li>
+                    <get var="tmp"/>
+                </li>
+            </condition>
+            </template>
+        </category>
+
+    </topic>
+
+    
+
+
+</aiml>

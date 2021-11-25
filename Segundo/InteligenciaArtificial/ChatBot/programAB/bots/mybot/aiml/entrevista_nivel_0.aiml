@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <!--Primera regla -->
+    <category>
+        <pattern>Hablame un poco de ti</pattern>
+        <template>Tengo <bot name="age"/> anios, soy de <bot name="location"/>, 
+        se hablar fluidamente : <bot name="languages"/>, y me encanta la informatica!</template>
+    </category>
+    <!--Variantes de la primera regla-->
+    <!--Cuentame sobre ti-->
+    <!--Como te describirias-->
+    <category>
+        <pattern>(Hablame) * de ti * </pattern>
+        <template><srai>Hablame un poco de ti</srai></template>
+    </category>
+
+    <category>
+        <pattern>^ [hablame cuentame] ^ ti ^  </pattern>
+        <template><srai>Hablame un poco de ti</srai></template>
+    </category>
+    <category>
+        <pattern> ^ describ+ </pattern>
+        <template><srai>Hablame un poco de ti</srai></template>
+    </category>
+
+    <!--Segunda regla -->
+    <category>
+        <pattern>Cual es tu mayor defecto </pattern>
+        <template>Puedo ser un poco impaciente y puede ocasionar 
+            que a veces sea desordenado.</template>
+    </category>
+    <!--Variantes de la segunda regla-->
+    <!-- Tu peor defecto-->
+    <!-- lo peor de ti-->
+    <!-- Alguna desventaja -->
+    <category>
+        <pattern> ^ tu  ^ (mayor) ^ defecto ^ </pattern>
+        <template><srai>Cual es tu mayor defecto</srai></template>
+    </category>
+
+    <category>
+        <pattern>^ [peor desventaja ] ^  </pattern>
+        <template><srai>Cual es tu mayor defecto</srai></template>
+    </category>
+    <!--Tercera regla -->
+    <category>
+        <pattern>Cuales son tus 3 mayores virtudes </pattern>
+        <template>Me considero que soy responsable, maduro con respecto  a la toma de
+            elecciones y me encanta aprender cosas nuevas</template>
+    </category>
+    <!--Variantes de la tercera regla-->
+    <category>
+        <pattern> ^ tu+  ^ (mayor) ^ (3) ^  virtud+ ^ </pattern>
+        <template><srai>Cuales son tus 3 mayores virtudes </srai></template>
+    </category>
+    <!--Cuarta regla -->
+    <category>
+        <pattern>Te consideras una persona creativa </pattern>
+        <template>Si , lo considero una de mis mejores virtudes
+            suelo estar siempre muy insperado a la hora de resolver algun problema para encontrarle solucion
+        </template>
+    </category>
+
+    <category>
+        <pattern>  (tu) ^ [consider+ eres ser+] ^ creativ+ ^ </pattern>
+        <template><srai>Te consideras una persona creativa</srai></template>
+    </category>
+
+    <!-- 5º Reglas -->
+    <category>
+        <pattern> Por que deberiamos escogerte a ti  </pattern>
+        <template>
+            Soy muy trabajador, me adapto facilmente a los cambios 
+            y considero que trabajo bien en equipo aparte de tener los conocimientos necesarios
+        </template>
+    </category>
+    <!-- contratar,tomar,seleccionar,merecer puesto -->
+    <category>
+        <pattern>   ^ [ tendr+ deber+ ] ^ [ contrat+ tom+ seleccion+ merece+ coger+ ] ^ puesto </pattern>
+        <template><srai>Por que deberiamos escogerte a ti</srai></template>
+    </category>
+
+    <!--crees que estas preparado para asumir el puesto-->
+    <category>
+        <pattern> ^ asumir+ ^ puesto ^ </pattern>
+        <template><srai>Por que deberiamos escogerte a ti</srai></template>
+    
+    </category>
+
+
+    <category>
+        <pattern> ^ [ prepara+ listo capaci+ ] ^  para ^ puesto</pattern>
+        <template><srai>Por que deberiamos escogerte a ti</srai></template>
+    
+    </category>
+
+    <category>
+        <pattern> ^ cumpl+ ^ requisitos  ^ </pattern>
+        <template><srai>Por que deberiamos escogerte a ti</srai></template>
+    
+    </category>
+   
+</aiml>

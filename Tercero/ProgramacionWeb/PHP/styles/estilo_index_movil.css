@@ -1,0 +1,53 @@
+html{
+    padding: 0;
+}
+header{
+    display: block;
+    text-align: center;
+
+}
+
+header .logo{
+    width: 25%;
+    height: 50%;
+}
+.navigation{
+    margin: 3%;
+    position: relative;
+}
+
+.navigation ul{
+    height:70px;
+    margin: 1%;
+    font-size: x-large ;
+    text-align: center;
+    display: block;
+    overflow: scroll;
+    scroll-behavior: smooth;
+
+}
+.navigation a{
+    padding:0;
+    margin: 1%;
+
+}
+
+
+
+main{
+    display: block;
+    width: 100%;
+}
+.imagen_principal{
+    display: block;
+    width: 100%;
+}
+.imagen_principal img{
+    display: none;
+    width: 50%;
+}
+.items_destacados{
+    display: block;
+    height: 320px;
+    width: 100%;
+}
