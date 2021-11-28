@@ -1,0 +1,269 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>TopLigasBasket</title>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+
+  </head>
+
+  <body >
+  	<header id="header" class="">
+  		 <h1>LA MEJOR WEB DE BUSQUEDA DE TUS LIGAS FAVORITAS DE BALONCESTO</h1>
+  	</header><!-- /header -->
+
+
+    <div class="Principal">
+    	<div class="fondo"></div>
+
+    	<div class="formularios">
+				<div class= "Estadisticas">
+
+					<h2>Seleccione la liga y el equipo del que quiera conocer sus estadisticas.</h2>
+
+					<label for="Ligas">Selecciona la liga:</label>
+				            	<select id="id_select" name="Liga" form="league_form">
+				            		<option value="12">NBA</option>
+				            		<option value="2">Euro-Liga</option>
+				            		<option value="117">Liga-Endesa</option>
+				    			</select>
+
+
+					<label for="Equipos">Elige el equipo que quiere consultar:</label>
+							<select id="equipo_nba" name="Equipo" form="league_form">
+							<!-- {Memphis Grizzlies=146, Team World=1414, Los Angeles Clippers=144,
+							San Antonio Spurs=158, Boston Celtics=133, Utah Jazz=160, Milwaukee Bucks=148,
+							Team USA=1413, Los Angeles Lakers=145, Sacramento Kings=157, Charlotte Hornets=135,
+							Indiana Pacers=143, Team LeBron=1412, Oklahoma City Thunder=152, Philadelphia 76ers=154,
+							Team Giannis=1411, Portland Trail Blazers=156, Miami Heat=147, Brooklyn Nets=134, New York Knicks=151,
+							Golden State Warriors=141, Minnesota Timberwolves=149, Toronto Raptors=159, Atlanta Hawks=132, Houston Rockets=142,
+							Dallas Mavericks=138, Detroit Pistons=140, Denver Nuggets=139, New Orleans Pelicans=150, Cleveland Cavaliers=137,
+							Chicago Bulls=136,
+							Washington Wizards=161, Phoenix Suns=155, Orlando Magic=153} -->
+									<option value="">-----Equipos NBA------</option>
+				            		<option value="Boston Celtics">Boston Celtics</option>
+				            		<option value="Brooklyn Nets">Brooklyn Nets</option>
+				            		<option value="New York Knicks">New York Knicks</option>
+				            		<option value="Philadelphia 76ers">Philadelphia 76ers</option>
+				            		<option value="Toronto Raptors">Toronto Raptors</option>
+				            		<option value="Chicago Bulls">Chicago Bulls</option>
+				            		<option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
+				            		<option value="Detroit Pistons">Detroit Pistons</option>
+				            		<option value="Indiana Pacers">Indiana Pacers</option>
+				            		<option value="Milwaukee Bucks">Milwaukee Bucks</option>
+				            		<option value="Atlanta Hawks">Atlanta Hawks</option>
+				            		<option value="Charlotte Hornets">Charlotte Hornets</option>
+				            		<option value="Miami Heat">Miami Heat</option>
+				            		<option value="Orlando Magic">Orlando Magic</option>
+				            		<option value="Washington Wozards">Washington Wozards</option>
+				            		<option value="Denver Nuggets">Denver Nuggets</option>
+				            		<option value="Minnesota Timberwolves">Minnesota Timberwolves</option>
+				            		<option value="Oklahoma City Thunder">Oklahoma City Thunder</option>
+				            		<option value="Portland Trail Blazers">Portland Trail Blazers</option>
+				            		<option value="Utah Jazz">Utah Jazz</option>
+				            		<option value="Golden State Warriors">Golden State Warriors</option>
+				            		<option value="Los Angeles Clippers">Los Angeles Clippers</option>
+				            		<option value="Los Angeles Lakers">Los Angeles Lakers</option>
+				            		<option value="Phoenix Suns">Phoenix Suns</option>
+				            		<option value="Sacramento Kings">Sacramento Kings</option>
+				            		<option value="Dallas Mavericks">Dallas Mavericks</option>
+				            		<option value="Houston Rockets">Houston Rockets</option>
+				            		<option value="Memphis Grizzlies">Memphis Grizzlies</option>
+				            		<option value="New Orleans Pelicans">New Orleans Pelicans</option>
+				            		<option value="San Antonio Spurs">San Antonio Spurs</option>
+				            		<option value="">-----Equipos Euroliga------</option>
+				            		<option value="0">Alba Berlin</option>
+				            		<option value="0">Andolus Efes Istambul</option>
+				            		<option value="0">AX Armani Exchange Milan</option>
+				            		<option value="0">Estrella Roja</option>
+				            		<option value="0">CSKA Moscú</option>
+				            		<option value="0">Barça Lassa</option>
+				            		<option value="0">FC Bayern Munich</option>
+				            		<option value="0">Fenerbahce Istanbul</option>
+				            		<option value="0">Khimki Moscú</option>
+				            		<option value="0">Kirolbet Baskonia</option>
+				            		<option value="0">Asvel Villeurbanne</option>
+				            		<option value="0">Maccabi Fox Tel Aviv</option>
+				            		<option value="0">Olympiacos Piraeus</option>
+				            		<option value="0">Panathinaikos</option>
+				            		<option value="0">Real Madrid</option>
+				            		<option value="0">Valencia Basket</option>
+				            		<option value="0">Zalgiris Kaunas</option>
+				            		<option value="0">Zenit St.Petersburgo</option>
+				            		<option value="">------Equipos Endesa-------</option>
+									<!--{Gipuzkoa=1124, Obradoiro CAB=2337, Joventut Badalona=2334, Barcelona=2329,
+										MoraBanc Andorra=2335, Real Madrid=2338, San Pablo Burgos=1699, Tenerife=2339,
+										Gran Canaria=2333, Baskonia=2331, Manresa=1698, Estudiantes=284,
+										 Unicaja=2340, Murcia=2336, Breogan=1120, Fuenlabrada=2332, Valencia=2341,
+										 Tecnyconta Zaragoza=2342}-->
+				            		<option value="Real Madrid">Real Madrid</option>
+				            		<option value="Barcelona">Barça Lassa</option>
+				            		<option value="Tenerife">Lenovo Tenerife</option>
+				            		<option value="Valencia">Valencia Basket</option>
+				            		<option value="Baskonia">TD Systems Baskonia</option>
+				            		<option value="San Pablo Burgos">Hereda San Pablo Burgos</option>
+				            		<option value="Joventut Badalona">Club Joventut de Badalona</option>
+				            		<option value="Manresa">Baxi Manresa</option>
+				            		<option value="Unicaja">Unicaja</option>
+				            		<option value="Gran Canaria">Gran Canaria</option>
+				            		<option value="MoraBanc Andorra">MoraBanc Andorra</option>
+				            		<option value="Murcia">UCAM Murcia</option>
+				            		<option value="Tecnyconta Zaragoza">Casademont Zaragoza</option>
+				            		<option value="Obradoiro CAB">Monbus Obrado</option>
+				            		<option value="Fuenlabrada">Urbas Fuenlabrada</option>
+				            		<option value="Estudiantes">Estudiantes</option>
+				            		<option value="0">RETAbet Bilbao Basket</option>
+				            		<option value="Gipuzkoa">Acnus Gipozkoa Basket</option>
+
+				    		</select>
+
+				   	<form action="/ligas" id="league_form">
+
+
+				            <input class ="boton" type="reset"/>
+				            <input class ="boton" type="submit"/>
+
+					</form>
+
+				</div>
+
+				<div id="clasificacion">
+
+					<h2>Mostrar la clasificacion de su liga preferida:</h2>
+
+					<label for="clasi_form">Selecciona la liga:</label>
+				            	<select id="id_select" name="Liga" form="clasi_form">
+				            		<option value="0">NBA</option>
+				            		<option value="1">Euro-Liga</option>
+				            		<option value="0">Liga-Endesa</option>
+				    			</select>
+				    <label for="clasi_form">Selecciona la Temporada:</label>
+				            	<select id="Temporada" name="Temporada" form="clasi_form">
+				            		<option value="2020-2021">2020-2021</option>
+				            		<option value="2019-2020">2019-2020</option>
+				            		<option value="2018-2019">2018-2019</option>
+				            		<option value="2017-2018">2017-2018</option>
+				            		<option value="2016-2017">2016-2017</option>
+				    			</select>
+
+
+					<form action="/clasificacion" id="clasi_form">
+
+
+
+				            <input class ="boton" type="reset"/>
+				            <input class ="boton" type="submit"/>
+
+					</form>
+
+
+				</div>
+
+				<div id="plantilla_equipo">
+
+					<h2>Consulta las plantillas de los equipos de la NBA:</h2>
+
+					<form action="/plantilla" id="plantilla_form">
+
+				            <label for="Equipos">Elige el equipo del que quiere consultar su plantilla:</label>
+
+							<select id="equipo_nba" name="equipo" form="plantilla_form">
+
+									<option value="">-----Equipos NBA------</option>
+				            		<option value="Pelicans">Pelicans</option>
+				            		<option value="Hornets">Hornets</option>
+
+									<option value="Celtics">Celtics</option>
+									<option value="Lakers">Lakers</option>
+									<option value="76ers">76ers</option>
+									<option value="Nuggets">Nuggets</option>
+									<option value="Wizards">Wizards</option>
+									<option value="Grizzlies">Grizzlies</option>
+									<option value="Mavericks">Mavericks</option>
+									<option value="Wildcats">Wildcats</option>
+									<option value="Timberwolves">Timberwolves</option>
+									<option value="Rockets">Rockets</option>
+									<option value="Nets">Nets</option>
+									<option value="Spurs">Spurs</option>
+
+									<option value="Heat">Heat</option>
+									<option value="Trail Blazers">Trail Blazers</option>
+									<option value="Bullets">Bullets</option>
+									<option value="Knicks">Knicks</option>
+									<option value="Hawks">Hawks</option>
+									<option value="Pistons">Pistons</option>
+									<option value="Raptors">Raptors</option>
+
+									<option value="Bucks">Bucks</option>
+									<option value="Suns">Suns</option>
+									<option value="Thunder">Thunder</option>
+									<option value="Magic">Magic</option>
+									<option value="Jazz">Jazz</option>
+									<option value="Bulls">Bulls</option>
+									<option value="Clippers">Clippers</option>
+
+
+
+
+
+				            		<option value="">-----Equipos Euroliga------</option>
+				            		<option value="0">Alba Berlin</option>
+				            		<option value="0">Andolus Efes Istambul</option>
+				            		<option value="0">AX Armani Exchange Milan</option>
+				            		<option value="0">Estrella Roja</option>
+				            		<option value="0">CSKA Moscú</option>
+				            		<option value="0">Barça Lassa</option>
+				            		<option value="0">FC Bayern Munich</option>
+				            		<option value="0">Fenerbahce Istanbul</option>
+				            		<option value="0">Khimki Moscú</option>
+				            		<option value="0">Kirolbet Baskonia</option>
+				            		<option value="0">Asvel Villeurbanne</option>
+				            		<option value="0">Maccabi Fox Tel Aviv</option>
+				            		<option value="0">Olympiacos Piraeus</option>
+				            		<option value="0">Panathinaikos</option>
+				            		<option value="0">Real Madrid</option>
+				            		<option value="0">Valencia Basket</option>
+				            		<option value="0">Zalgiris Kaunas</option>
+				            		<option value="0">Zenit St.Petersburgo</option>
+				            		<option value="">------Equipos Endesa-------</option>
+				            		<option value="0">Real Madrid</option>
+				            		<option value="0">Barça Lassa</option>
+				            		<option value="0">Lenovo Tenerife</option>
+				            		<option value="0">Valencia Basket</option>
+				            		<option value="0">TD Systems Baskonia</option>
+				            		<option value="0">Hereda San Pablo Burgos</option>
+				            		<option value="0">Club Joventut de Badalona</option>
+				            		<option value="0">Baxi Manresa</option>
+				            		<option value="0">Unicaja</option>
+				            		<option value="0">Herbalife</option>
+				            		<option value="0">MoraBanc Andorra</option>
+				            		<option value="0">UCAM Murcia</option>
+				            		<option value="0">Casademont Zaragoza</option>
+				            		<option value="0">Monbus Obrado</option>
+				            		<option value="0">Urbas Fuenlabrada</option>
+				            		<option value="0">Coosur Real Betis</option>
+				            		<option value="0">Movistar Estudiantes</option>
+				            		<option value="0">RETAbet Bilbao Basket</option>
+				            		<option value="0">Acnus Gipozkoa Basket</option>
+
+				   			</select>
+
+				            <input class ="boton" type="reset"/>
+				            <input class ="boton" type="submit"/>
+
+					</form>
+
+
+				</div>
+
+		</div>
+
+	</div>
+  <footer>
+
+			Realizado por: Miguel Acedo y Pablo Moreno.
+
+  </footer>
+
+  </body>
+</html>

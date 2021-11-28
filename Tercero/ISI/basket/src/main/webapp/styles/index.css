@@ -1,0 +1,68 @@
+body{
+	color:black;
+	font-size:20px;
+	display: flex;
+	flex-flow: column;	
+	align-items: center;
+	align-content: center;
+	font-weight: bold;
+}
+
+
+.Principal{
+	display: flex;	
+	align-items: center;
+	align-content: center;
+	margin-bottom: 15vh;
+}
+.formularios{
+		
+	display: flex;
+	flex-flow: column;
+	align-items: center;	
+	justify-content: space-between;
+}
+
+header{
+	color: white;
+	display: flex;
+	justify-content: center;
+	margin: 60px;
+	width: 100%;
+	background-color: darkred;
+	
+}
+
+.Principal .fondo{
+	content: "";
+	z-index: -1;
+	background-size: cover;
+	background-image: url(collage.jpeg);
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.22;
+
+}
+
+.boton{
+	margin: 2vh;
+}
+table{
+	text-align: center;
+	padding:2%;
+	border-collapse: collapse;
+}
+th,td,tr{
+	
+  border-bottom: 1px solid #ddd;
+  padding:20px;
+
+}
+
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
