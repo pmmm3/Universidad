@@ -40,7 +40,7 @@ public class NBA {
 		 Vector<String> jugadores_equipo = new Vector<String>();
 		 HttpRequest request = HttpRequest.newBuilder()
 					.uri(URI.create("https://api-nba-v1.p.rapidapi.com/players/teamId/"+Integer.toString(id_team)))
-					.header("x-rapidapi-key", "360809f858msh80877f3455ec74ep1cd698jsn4661358865a9")
+					.header("x-rapidapi-key", "3865a9")
 					.header("x-rapidapi-host", "api-nba-v1.p.rapidapi.com")
 					.method("GET", HttpRequest.BodyPublishers.noBody())
 					.build();

@@ -61,7 +61,7 @@ public class ApiBasketball {
 		 {
 		 HttpRequest request = HttpRequest.newBuilder()
 					.uri(URI.create("https://api-basketball.p.rapidapi.com/statistics?season=2018-2019&league="+Integer.toString(id_l)+"&team="+Integer.toString(id)))
-					.header("x-rapidapi-key", "26accdcb0amsh1e38f58b994dd82p15bd79jsn4c4afa3cb0a2")
+					.header("x-rapidapi-key", "")
 					.header("x-rapidapi-host", "api-basketball.p.rapidapi.com")
 					.method("GET", HttpRequest.BodyPublishers.noBody())
 					.build();
